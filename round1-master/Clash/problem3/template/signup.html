@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>register</title>
+</head>
+<body>
+    {% if error %}
+    {{ error }}
+    {% endif %}
+    <form action="" method="post">
+        <div>{% csrf_token %}
+        Enter Username:<br>
+        <input type="text" name="uname" placeholder="Username"><br>
+        enter password<br>
+        <input type="password" name="pass" placeholder="Password"><br>
+        enter password again:<br>
+        <input type="password" name="passwordagain" placeholder="Confirm Password"><br>
+        <input type="text"name="p1_name"placeholder="First player name:"><br>
+        <input type="text"name="p1_email"placeholder="First player email:"><br>
+        <input type="text"name="mob1" placeholder="1st player mobile No."><br>
+        <input type="text"name="p2_name"placeholder="Second player name:"><br>
+        <input type="text"name="p2_email"placeholder="Second player email:"><br>
+        <input type="text"name="mob2" placeholder="2nd player mobile No."><br>
+        <input type="submit" value="Signup" name="login">
+        </div>
+    </form>
+</body>
+</html>
