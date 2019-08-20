@@ -8,7 +8,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
 
-from .models import Questions, Profile, Score
+from .models import Questions, Profile, Score, LILO
 
 regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
 counter = 0
@@ -38,6 +38,7 @@ def index1(request):
             if re.search(regex, p1_email and p2_email):
                 userprofile.save()
                 auth.login(request, user)
+                LILO.login_time=datetime.datetime.now(login(request,user))
                 return redirect(reverse('index2'))
             else:
                 return render(request, 'signup.html', {'error': "Email not valid"})
@@ -91,9 +92,12 @@ def index3(request, qno):
     return redirect(reverse('index2'))
 
 
-def login_logout(request,login_time,logout_time):
-    login_time = datetime.datetime.now()
-    logout_time = datetime.datetime.now()
+def login_logout(request):
+    print(LILO.login_time)
+    if request.POST.get=='logout':
+        auth.logout(request,Profile.user)
+        LILO.logout_time = datetime.datetime.now()
+        print(LILO.logout_time)
     context = {'login': login, 'logout': logout, 'score': counter}
     return render(request, 'Result_page.html', context)
 
