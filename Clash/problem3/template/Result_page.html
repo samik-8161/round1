@@ -6,6 +6,7 @@
 </head>
 <body>
 <form method="post">
+    {%csrf_token%}
     <p>This is the result page</p><br>
     <p>Login time : {{login}}</p><br>
     <p>Logout time : {{logout}}</p><br>

@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 class Profile(models.Model):
     p1_name = models.CharField(max_length=100)
     p2_name = models.CharField(max_length=100)
@@ -19,3 +18,12 @@ class Questions(models.Model):
     option3 = models.CharField(max_length=100, default="")
     option4 = models.CharField(max_length=100, default="")
     answer = models.CharField(max_length=100, default="")
+
+    def __str__(self):
+        return self.question
+
+class Score(models.Model):
+    count = models.IntegerField(default=0)
+
+
+

@@ -2,12 +2,14 @@ import datetime
 import random
 import re
 
-from django.contrib import auth
+from django.contrib import auth, messages
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.urls import reverse
+from django.contrib.auth import login, logout, authenticate
+import datetime
 
-from .models import Questions, Profile
+from .models import Questions, Profile, Score
 
 regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
 counter = 0
@@ -59,25 +61,29 @@ def index3(request, qno):
     global counter, temp1, temp2, x
     answer = Questions.objects.get(pk=qno)
     ans = request.POST.get('options')
+    a = Score.objects.get(pk=1).count
+    b = Score.objects.get(pk=2).count
+    c = Score.objects.get(pk=3).count
+    d = Score.objects.get(pk=4).count
     print(answer.answer)
     print(ans)
     for i in range(x, 4):
 
         if answer.answer == ans and i == 1:
-            counter = counter + 4
+            counter = counter + a
             x = 2
         elif answer.answer != ans and i == 1:
-            counter = counter - 2
+            counter = counter - b
             x = 2
 
         elif answer.answer == ans and temp1 == temp2:
-            counter = counter + 4
+            counter = counter + a
         elif answer.answer != ans and temp1 == temp2:
-            counter = counter - 2
+            counter = counter - b
         elif answer.answer == ans and temp1 != temp2:
-            counter = counter + 2
+            counter = counter + c
         else:
-            counter = counter - 1
+            counter = counter - d
         break
 
     temp1 = answer.answer
@@ -87,7 +93,12 @@ def index3(request, qno):
 
 
 def login_logout(request):
-   # login = datetime.time(request.POST.get('login'))
-    #logout = datetime.time(request.POST.get('logout'))
-    context = {'score': counter}
+
+    login = datetime.datetime.now().time(request.POST.get('login'))
+    logout = datetime.datetime.now().time(request.POST.get('logout'))
+    context = {'login': login, 'logout': logout, 'score': counter}
     return render(request, 'Result_page.html', context)
+
+
+
+
