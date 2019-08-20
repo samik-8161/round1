@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-import datetime
 
 class Profile(models.Model):
     p1_name = models.CharField(max_length=100)
@@ -23,7 +22,7 @@ class Questions(models.Model):
     def __str__(self):
         return self.question
 
-class login_logout(models.Model):
+class LILO(models.Model):
     login_time=models.DateTimeField(max_length=100,default="")
     logout_time=models.DateTimeField(max_length=100,default="")
 
