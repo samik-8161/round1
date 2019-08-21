@@ -93,12 +93,10 @@ def index3(request, qno):
 
 
 def login_logout(request):
-    print(LILO.login_time)
     if request.POST.get=='logout':
         auth.logout(request,Profile.user)
         LILO.logout_time = datetime.datetime.now()
-        print(LILO.logout_time)
-    context = {'login': login, 'logout': logout, 'score': counter}
+    context = {'login': LILO.login_time, 'logout': LILO.logout_time, 'score': counter}
     return render(request, 'Result_page.html', context)
 
 
