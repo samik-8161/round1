@@ -4,18 +4,14 @@ import re
 
 from django.contrib import auth
 from django.contrib.auth.models import User
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
 
-from .models import Questions, Profile, Score, LILO
+from .models import Questions, Profile
 
 regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
-counter = 0
-temp1 = ''
-temp2 = ''
-x = 1
-
 
 def index1(request):
     if request.method == "POST":
@@ -36,9 +32,9 @@ def index1(request):
                                       mob2=mob2, user=user)
 
             if re.search(regex, p1_email and p2_email):
-                userprofile.save()
                 auth.login(request, user)
-                LILO.login_time=datetime.datetime.now(login(request,user))
+                userprofile.login_time=datetime.datetime.now(login(request,user))
+                userprofile.save()
                 return redirect(reverse('index2'))
             else:
                 return render(request, 'signup.html', {'error': "Email not valid"})
@@ -49,56 +45,52 @@ def index1(request):
 
 
 def index2(request):
-    global counter
+    profile = request.user.Profile
     qno = random.randint(1, 4)
     questions = Questions.objects.get(pk=qno)
-    print(counter)
-    context = {'question': questions, 'score': counter}
+    print(profile.score)
+    context = {'question': questions, 'score': profile.score}
     return render(request, 'Question.html', context)
 
 
 def index3(request, qno):
-    global counter, temp1, temp2, x
+    profile = Profile.objects.get(user=request.user)
     answer = Questions.objects.get(pk=qno)
+    a = Questions.score_cntr.get(pk=1)
+    b = Questions.score_cntr.get(pk=2)
+    c = Questions.score_cntr.get(pk=3)
     ans = request.POST.get('options')
-    a = Score.objects.get(pk=1).count
-    b = Score.objects.get(pk=2).count
-    c = Score.objects.get(pk=3).count
-    d = Score.objects.get(pk=4).count
-    print(answer.answer)
-    print(ans)
-    for i in range(x, 4):
-
-        if answer.answer == ans and i == 1:
-            counter = counter + a
-            x = 2
-        elif answer.answer != ans and i == 1:
-            counter = counter - b
-            x = 2
-
-        elif answer.answer == ans and temp1 == temp2:
-            counter = counter + a
-        elif answer.answer != ans and temp1 == temp2:
-            counter = counter - b
-        elif answer.answer == ans and temp1 != temp2:
-            counter = counter + c
-        else:
-            counter = counter - d
-        break
-
-    temp1 = answer.answer
-    temp2 = ans
-    print(counter)
+    if answer.answer == ans:
+        profile.score = profile.score + a
+    elif answer.answer != ans:
+        profile.score = profile.score - b
+    elif answer.answer == ans and Questions.temp1_Ans == Questions.temp2_Ans:
+        profile.score = profile.score + a
+    elif answer.answer != ans and Questions.temp1_Ans == Questions.temp2_Ans:
+        profile.score = profile.score - b
+    elif answer.answer == ans and Questions.temp1_Ans != Questions.temp2_Ans:
+        profile.score = profile.score + c
+    else:
+        profile.score = profile.score - c
+    Questions.temp1_Ans = answer.answer
+    Questions.temp2_Ans = ans
     return redirect(reverse('index2'))
 
 
-def login_logout(request):
-    if request.POST.get=='logout':
-        auth.logout(request,Profile.user)
-        LILO.logout_time = datetime.datetime.now()
-    context = {'login': LILO.login_time, 'logout': LILO.logout_time, 'score': counter}
+def index4(request):
+    profile = request.user.Profile
+    profile.logout_time = datetime.datetime.now()
+    profile.save()
+    auth.logout(request)
+    context = {'login': profile.login_time, 'logout': profile.logout_time, 'score': profile.score}
     return render(request, 'Result_page.html', context)
 
 
+def validate_username(request):
+    username = request.GET.get('username', None)
+    data = {
+        'is_taken': User.objects.filter(username__iexact=username).exists()
+    }
+    return JsonResponse(data)
 
 
