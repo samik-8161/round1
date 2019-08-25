@@ -46,12 +46,19 @@ def index1(request):
 
 
 def index2(request):
-    profile = request.user.Profile
-    qno = random.randint(1, 4)
-    questions = Questions.objects.get(pk=qno)
-    print(profile.score)
-    context = {'question': questions, 'score': profile.score}
-    return render(request, 'Question.html', context)
+    profile = Profile.objects.get(user=request.user)
+
+
+    while True:
+        qno = random.randint(1, 4)
+        questions = Questions.objects.get(pk=qno)
+        context = {'question': questions, 'score': profile.score}
+        try:
+            Questions.objects.get(pk=qno, level=profile.year)
+            print(profile.score)
+            return render(request, 'Question.html', context)
+        except Questions.DoesNotExist:
+            continue
 
 
 def index3(request, qno):
