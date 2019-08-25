@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
 
-from .models import Questions, Profile, Score
+from .models import Questions, Profile, Score, Response
 
 regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
 
@@ -78,6 +78,8 @@ def index3(request, qno):
         profile.score = profile.score - c
     profile.temp1_Ans = answer.answer
     profile.temp2_Ans = ans
+    response = Response.objects.create(user=request.user, ques=answer, resp=ans)
+    response.save()
     profile.save()
     return redirect(reverse('index2'))
 

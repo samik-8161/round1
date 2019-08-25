@@ -48,3 +48,8 @@ class Questions(models.Model):
 
 class Score(models.Model):
     score_cntr = models.IntegerField(default=0)
+
+class Response(models.Model):
+    user = models.ForeignKey(User , on_delete=models.CASCADE)
+    ques = models.ForeignKey(Questions , on_delete=models.CASCADE)
+    resp = models.CharField(max_length=100,default="")
