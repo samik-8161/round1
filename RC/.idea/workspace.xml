@@ -1,4 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e20efb77-6ec8-4343-96e1-99125da97e78" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Clash/problem3/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Clash/problem3/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/project/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Clash/problem3/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Clash/problem3/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/views.py" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="ProjectId" id="1PVhmobXInszazXWlNuxKq7CHpO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e20efb77-6ec8-4343-96e1-99125da97e78" name="Default Changelist" comment="" />
+      <created>1566712717705</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1566712717705</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
 </project>

@@ -9,9 +9,10 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
 
-from .models import Questions, Profile
+from .models import Questions, Profile, Score
 
 regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
+
 
 def index1(request):
     if request.method == "POST":
@@ -33,7 +34,7 @@ def index1(request):
 
             if re.search(regex, p1_email and p2_email):
                 auth.login(request, user)
-                userprofile.login_time=datetime.datetime.now(login(request,user))
+                userprofile.login_time = datetime.datetime.now(login(request, user))
                 userprofile.save()
                 return redirect(reverse('index2'))
             else:
@@ -56,24 +57,21 @@ def index2(request):
 def index3(request, qno):
     profile = Profile.objects.get(user=request.user)
     answer = Questions.objects.get(pk=qno)
-    a = Questions.score_cntr.get(pk=1)
-    b = Questions.score_cntr.get(pk=2)
-    c = Questions.score_cntr.get(pk=3)
+    a = Score.objects.get(pk=1).score_cntr
+    b = Score.objects.get(pk=2).score_cntr
+    c = Score.objects.get(pk=3).score_cntr
     ans = request.POST.get('options')
-    if answer.answer == ans:
+    if answer.answer == ans and profile.temp1_Ans == profile.temp2_Ans:
         profile.score = profile.score + a
-    elif answer.answer != ans:
+    elif answer.answer != ans and profile.temp1_Ans == profile.temp2_Ans:
         profile.score = profile.score - b
-    elif answer.answer == ans and Questions.temp1_Ans == Questions.temp2_Ans:
-        profile.score = profile.score + a
-    elif answer.answer != ans and Questions.temp1_Ans == Questions.temp2_Ans:
-        profile.score = profile.score - b
-    elif answer.answer == ans and Questions.temp1_Ans != Questions.temp2_Ans:
-        profile.score = profile.score + c
+    elif answer.answer == ans and profile.temp1_Ans != profile.temp2_Ans:
+        profile.score = profile.score + b
     else:
         profile.score = profile.score - c
-    Questions.temp1_Ans = answer.answer
-    Questions.temp2_Ans = ans
+    profile.temp1_Ans = answer.answer
+    profile.temp2_Ans = ans
+    profile.save()
     return redirect(reverse('index2'))
 
 
@@ -92,5 +90,3 @@ def validate_username(request):
         'is_taken': User.objects.filter(username__iexact=username).exists()
     }
     return JsonResponse(data)
-
-
