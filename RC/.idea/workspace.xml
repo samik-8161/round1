@@ -2,16 +2,33 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e20efb77-6ec8-4343-96e1-99125da97e78" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Clash/problem3/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Clash/problem3/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/project/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Clash/problem3/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Clash/problem3/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../Clash/problem3/project/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rc r1/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rc r1/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rc r1/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rc r1/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc r1/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/.idea/problem3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/.idea/problem3.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/manage.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/manage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/problem3/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/problem3/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/problem3/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/problem3/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/problem3/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/problem3/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/problem3/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/problem3/wsgi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/migrations/0002_auto_20190806_1551.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/migrations/0002_auto_20190806_1551.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/migrations/0003_profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/migrations/0003_profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/migrations/0004_auto_20190815_1741.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/migrations/0004_auto_20190815_1741.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/migrations/0005_auto_20190815_1744.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/migrations/0005_auto_20190815_1744.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/migrations/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/migrations/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/template/Question.html" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/template/Question.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rc r1/template/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/rc_r1/template/signup.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,12 +36,20 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1PVhmobXInszazXWlNuxKq7CHpO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
@@ -58,7 +83,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

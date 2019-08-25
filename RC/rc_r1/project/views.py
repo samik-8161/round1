@@ -47,7 +47,7 @@ def index1(request):
 
 def index2(request):
     profile = request.user.Profile
-    qno = random.randint(1, 4)
+    qno = random.randint(1, 5)
     questions = Questions.objects.get(pk=qno)
     print(profile.score)
     context = {'question': questions, 'score': profile.score}
@@ -59,17 +59,17 @@ def index3(request, qno):
     answer = Questions.objects.get(pk=qno)
     a = Score.objects.get(pk=1).score_cntr
     b = Score.objects.get(pk=2).score_cntr
-    ans = request.POST.get('options')
-    if answer.answer == ans and profile.temp1_Ans == profile.temp2_Ans:
+    c = Score.objects.get(pk=3).score_cntr
+    ans1 = request.POST.get('attempt1')
+    if answer.answer == ans1:
         profile.score = profile.score + a
-    elif answer.answer != ans and profile.temp1_Ans == profile.temp2_Ans:
-        profile.score = profile.score - b
-    elif answer.answer == ans and profile.temp1_Ans != profile.temp2_Ans:
-        profile.score = profile.score + b
+        return redirect(reverse('index2'))
     else:
-        profile.score = profile.score - c
-    profile.temp1_Ans = answer.answer
-    profile.temp2_Ans = ans
+        ans2=request.POST.get('attempt2')
+        if answer.answer == ans2:
+            profile.score = profile.score - b
+        else:
+            profile.score = profile.score - c
     profile.save()
     return redirect(reverse('index2'))
 

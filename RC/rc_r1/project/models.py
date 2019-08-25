@@ -12,8 +12,6 @@ class Profile(models.Model):
     login_time = models.DateTimeField(null=True, max_length=100)
     logout_time = models.DateTimeField(max_length=100, null=True)
     score = models.IntegerField(default=0)
-    temp1_Ans = models.CharField(max_length=100, default="")
-    temp2_Ans = models.CharField(max_length=100, default="")
 
     def __str__(self):
         return self.p1_name
@@ -22,7 +20,7 @@ class Questions(models.Model):
     question = models.TextField(max_length=500, default="")
     attempt1 = models.IntegerField(blank=True, null=True)
     attempt2 = models.IntegerField(blank=True, null=True)
-    answer = models.IntegerField(max_length=200, default="")
+    answer = models.IntegerField()
 
     def __str__(self):
         return self.question

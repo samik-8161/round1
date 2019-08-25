@@ -10,10 +10,10 @@
     {% if error %}
     {{ error }}
     {% endif %}
-    <form action="" method="post">
+    <form id="new_user_form" action="" method="post">
         <div>{% csrf_token %}
         Enter Username:<br>
-        <input type="text" name="uname" placeholder="Username"><br>
+        <input type="text" name="uname" id="id_username" required="" placeholder="Username"><br>
         enter password<br>
         <input type="password" name="pass" placeholder="Password"><br>
         enter password again:<br>
@@ -24,8 +24,30 @@
         <input type="text"name="p2_name"placeholder="Second player name:"><br>
         <input type="text"name="p2_email"placeholder="Second player email:"><br>
         <input type="text"name="mob2" placeholder="2nd player mobile No."><br>
-        <input type="submit" value="Signup">
+        <input type="submit" value="Signup" name="login">
         </div>
     </form>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+{% block javascript %}
+    <script type="text/javascript">
+    $("#id_username").keyup(function () {
+      var username = $(this).val();
+$.ajax({
+        url: '/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (data) {
+          if (data.is_taken) {
+            alert("A user with this username already exists.");
+          }else
+              alert("This username is ok!");
+        }
+      });
+    });
+  </script>
+{% endblock %}
 </body>
 </html>
