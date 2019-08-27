@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Profile(models.Model):
     p1_name = models.CharField(max_length=100)
     p1_email = models.CharField(max_length=100)
@@ -12,8 +13,8 @@ class Profile(models.Model):
     login_time = models.DateTimeField(null=True, max_length=100)
     logout_time = models.DateTimeField(max_length=100, null=True)
     score = models.IntegerField(default=0)
-    temp1_Ans = models.CharField(max_length=100, default="")
-    temp2_Ans = models.CharField(max_length=100, default="")
+    incr = models.IntegerField(default=4)
+    decr = models.IntegerField(default=2)
 
     FE = 'FE'
     SE = 'SE'
@@ -46,10 +47,7 @@ class Questions(models.Model):
         return self.question
 
 
-class Score(models.Model):
-    score_cntr = models.IntegerField(default=0)
-
 class Response(models.Model):
-    user = models.ForeignKey(User , on_delete=models.CASCADE)
-    ques = models.ForeignKey(Questions , on_delete=models.CASCADE)
-    resp = models.CharField(max_length=100,default="")
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    ques = models.ForeignKey(Questions, on_delete=models.CASCADE)
+    resp = models.CharField(max_length=100, default="")

@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
 
-from .models import Questions, Profile, Score, Response
+from .models import Questions, Profile, Response
 
 regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
 
@@ -48,7 +48,6 @@ def index1(request):
 def index2(request):
     profile = Profile.objects.get(user=request.user)
 
-
     while True:
         qno = random.randint(1, 4)
         questions = Questions.objects.get(pk=qno)
@@ -64,20 +63,15 @@ def index2(request):
 def index3(request, qno):
     profile = Profile.objects.get(user=request.user)
     answer = Questions.objects.get(pk=qno)
-    a = Score.objects.get(pk=1).score_cntr
-    b = Score.objects.get(pk=2).score_cntr
-    c = Score.objects.get(pk=3).score_cntr
     ans = request.POST.get('options')
-    if answer.answer == ans and profile.temp1_Ans == profile.temp2_Ans:
-        profile.score = profile.score + a
-    elif answer.answer != ans and profile.temp1_Ans == profile.temp2_Ans:
-        profile.score = profile.score - b
-    elif answer.answer == ans and profile.temp1_Ans != profile.temp2_Ans:
-        profile.score = profile.score + b
+    if answer.answer == ans:
+        profile.score = profile.score + profile.incr
+        profile.incr = 4
+        profile.decr = 2
     else:
-        profile.score = profile.score - c
-    profile.temp1_Ans = answer.answer
-    profile.temp2_Ans = ans
+        profile.score = profile.score - profile.decr
+        profile.incr = 2
+        profile.decr = 1
     response = Response.objects.create(user=request.user, ques=answer, resp=ans)
     response.save()
     profile.save()
@@ -99,3 +93,5 @@ def validate_username(request):
         'is_taken': User.objects.filter(username__iexact=username).exists()
     }
     return JsonResponse(data)
+
+

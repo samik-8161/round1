@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="050baf5e-b5b2-4658-bcd5-9bb4fc1f57ee" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../../Clash/problem3/project/migrations/0007_auto_20190824_2223.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Clash/problem3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clash/problem3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Clash/problem3/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clash/problem3/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Clash/problem3/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clash/problem3/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../../Clash/problem3/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clash/problem3/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Clash/problem3/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clash/problem3/project/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../../Clash/problem3/template/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Clash/problem3/template/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/signup.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +21,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1PseRa8HB6dHXCyDYxODtjKouOO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -53,7 +58,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>

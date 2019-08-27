@@ -44,9 +44,9 @@ $.ajax({
         dataType: 'json',
         success: function (data) {
           if (data.is_taken) {
-            alert("A user with this username already exists.");
+            document.getElementById("id_username").style = "border : 2px solid red";
           }else
-              alert("This username is ok!");
+            document.getElementById("id_username").style = "border : 2px solid green";
         }
       });
     });
