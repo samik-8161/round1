@@ -51,8 +51,8 @@ def index2(request):
     while True:
         qno = random.randint(1, 4)
         questions = Questions.objects.get(pk=qno)
-        profile.visited.append(qno)
-        print(profile.visited)
+        #        profile.visited.append(qno)
+        #       print(profile.visited)
         context = {'question': questions, 'score': profile.score}
         try:
             Questions.objects.get(pk=qno, level=profile.year)
@@ -97,3 +97,20 @@ def validate_username(request):
     return JsonResponse(data)
 
 
+def buffer(request, qno):
+    profile = request.user.Profile
+    if profile.buff_cntr == 0:
+        profile.buff1 = qno
+        profile.buff_cntr = profile.buff_cntr + 1
+        return redirect(reverse('index2'))
+    elif profile.buff_cntr == 1:
+        profile.buff2 = qno
+        profile.buff_cntr = profile.buff_cntr + 1
+        return redirect(reverse('index2'))
+    elif profile.buff_cntr == 2:
+        profile.buff3 = qno
+        profile.buff_cntr = profile.buff_cntr + 1
+        return redirect(reverse('index2'))
+    else:
+        full_buff = {'is_full': profile.buff_cntr}
+        return JsonResponse(full_buff)

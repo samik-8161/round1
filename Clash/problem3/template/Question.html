@@ -21,6 +21,29 @@
             <td>{{ score }}</td></tr></table>
     <button type="submit" formaction="answer/{{ question.id }}/">Submit your response</button>
     <button type="submit" name="logout" formaction="logout/">Exit</button>
+    <button type="submit" name="buffer" id="buffer" formaction="pushinbuffer/{{ question.id }}/">Put this in buffer</button>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+{% block javascript %}
+    <script type="text/javascript">
+    $("#buffer").click(function () {
+      var username = $(this).val();
+$.ajax({
+        url: '/ajax/validate_username/',
+        data: {
+          'username': username
+        },
+        dataType: 'json',
+        success: function (full_buff) {
+          if (full_buff.is_full==3) {
+            alert("Your buffer is full, Solve at least one of them");
+          }else
+              alert("Added successfully to buffer");
+        }
+      });
+    });
+  </script>
+{% endblock %}
 
 </form>
 </body>

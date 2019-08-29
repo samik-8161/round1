@@ -5,12 +5,9 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../RC/rc_r1/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../RC/rc_r1/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../RC/rc_r1/project/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../RC/rc_r1/project/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../RC/rc_r1/project/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../RC/rc_r1/project/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../RC/rc_r1/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../RC/rc_r1/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../RC/rc_r1/template/Question.html" beforeDir="false" afterPath="$PROJECT_DIR$/../../RC/rc_r1/template/Question.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/Question.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/Question.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

@@ -16,7 +16,11 @@ class Profile(models.Model):
     score = models.IntegerField(default=0)
     incr = models.IntegerField(default=4)
     decr = models.IntegerField(default=2)
-    visited = ArrayField(models.IntegerField(default=0, null=True), size=100, null=True)
+#    visited = ArrayField(models.IntegerField(default=0, null=True), size=100, null=True)
+    buff1 = models.IntegerField(default=0)
+    buff2 = models.IntegerField(default=0)
+    buff3 = models.IntegerField(default=0)
+    buff_cntr = models.IntegerField(default=0)
 
     FE = 'FE'
     SE = 'SE'
@@ -52,4 +56,4 @@ class Questions(models.Model):
 class Response(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     ques = models.ForeignKey(Questions, on_delete=models.CASCADE)
-    resp = models.CharField(max_length=100, default="")
+    resp = models.CharField(max_length=100, default="", null=True)
