@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 
 
 class Profile(models.Model):
@@ -15,6 +16,7 @@ class Profile(models.Model):
     score = models.IntegerField(default=0)
     incr = models.IntegerField(default=4)
     decr = models.IntegerField(default=2)
+    visited = ArrayField(models.IntegerField(default=0, null=True), size=100, null=True)
 
     FE = 'FE'
     SE = 'SE'

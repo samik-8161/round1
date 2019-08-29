@@ -32,7 +32,7 @@ def index1(request):
                 userprofile = Profile(p1_name=p1_name, p1_email=p1_email, mob1=mob1, p2_name=p2_name, p2_email=p2_email,
                                       mob2=mob2, user=user)
 
-            if re.search(regex, p1_email and p2_email):
+            if re.search(regex, p1_email):
                 auth.login(request, user)
                 userprofile.login_time = datetime.datetime.now(login(request, user))
                 userprofile.save()
@@ -51,6 +51,8 @@ def index2(request):
     while True:
         qno = random.randint(1, 4)
         questions = Questions.objects.get(pk=qno)
+        profile.visited.append(qno)
+        print(profile.visited)
         context = {'question': questions, 'score': profile.score}
         try:
             Questions.objects.get(pk=qno, level=profile.year)

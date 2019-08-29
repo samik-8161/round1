@@ -9,7 +9,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.contrib.auth import login, logout
 
-from .models import Questions, Profile, Score
+from .models import Questions, Profile
 
 regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$'
 
@@ -32,7 +32,7 @@ def index1(request):
                 userprofile = Profile(p1_name=p1_name, p1_email=p1_email, mob1=mob1, p2_name=p2_name, p2_email=p2_email,
                                       mob2=mob2, user=user)
 
-            if re.search(regex, p1_email and p2_email):
+            if re.search(regex, p1_email):
                 auth.login(request, user)
                 userprofile.login_time = datetime.datetime.now(login(request, user))
                 userprofile.save()
@@ -48,8 +48,10 @@ def index1(request):
 def index2(request):
     profile = request.user.Profile
     qno = random.randint(1, 5)
+    profile.curqno = qno
     questions = Questions.objects.get(pk=qno)
     print(profile.score)
+    profile.save()
     context = {'question': questions, 'score': profile.score}
     return render(request, 'Question.html', context)
 
@@ -57,19 +59,19 @@ def index2(request):
 def index3(request, qno):
     profile = Profile.objects.get(user=request.user)
     answer = Questions.objects.get(pk=qno)
-    a = Score.objects.get(pk=1).score_cntr
-    b = Score.objects.get(pk=2).score_cntr
-    c = Score.objects.get(pk=3).score_cntr
-    ans1 = request.POST.get('attempt1')
+    ans1 = request.POST['attempt1']
+    print(ans1)
+    print(answer.answer)
+    profile.incr = 4
     if answer.answer == ans1:
-        profile.score = profile.score + a
-        return redirect(reverse('index2'))
+        profile.score = profile.score + profile.incr
     else:
-        ans2=request.POST.get('attempt2')
+        ans2 = request.POST['attempt2']
+        profile.incr = 2
         if answer.answer == ans2:
-            profile.score = profile.score - b
+            profile.score = profile.score + profile.incr
         else:
-            profile.score = profile.score - c
+            profile.score = profile.score - profile.decr
     profile.save()
     return redirect(reverse('index2'))
 
