@@ -22,6 +22,10 @@
     <button type="submit" formaction="answer/{{ question.id }}/">Submit your response</button>
     <button type="submit" name="logout" formaction="logout/">Exit</button>
     <button type="submit" name="buffer" id="buffer" formaction="pushinbuffer/{{ question.id }}/">Put this in buffer</button>
+    <button type="submit" name="buffer1" formaction="/{{ question.id }}">buffer1</button>
+    <button type="submit" name="buffer2" formaction="/{{ question.id }}">buffer2</button>
+    <button type="submit" name="buffer3" formaction="/{{ question.id }}">buffer3</button>
+
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 {% block javascript %}
@@ -35,7 +39,7 @@ $.ajax({
         },
         dataType: 'json',
         success: function (full_buff) {
-          if (full_buff.is_full==3) {
+          if (full_buff.is_full>2) {
             alert("Your buffer is full, Solve at least one of them");
           }else
               alert("Added successfully to buffer");

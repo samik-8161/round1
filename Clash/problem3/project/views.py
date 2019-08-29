@@ -45,21 +45,29 @@ def index1(request):
         return render(request, 'signup.html')
 
 
-def index2(request):
+def index2(request, qno=0):
     profile = Profile.objects.get(user=request.user)
-
-    while True:
-        qno = random.randint(1, 4)
-        questions = Questions.objects.get(pk=qno)
-        #        profile.visited.append(qno)
-        #       print(profile.visited)
-        context = {'question': questions, 'score': profile.score}
-        try:
-            Questions.objects.get(pk=qno, level=profile.year)
-            print(profile.score)
-            return render(request, 'Question.html', context)
-        except Questions.DoesNotExist:
-            continue
+    if qno == 0:
+        while True:
+            qno = random.randint(1, 4)
+            questions = Questions.objects.get(pk=qno)
+            #        profile.visited.append(qno)
+            #       print(profile.visited)
+            context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
+                       'buff3': profile.buff3}
+            try:
+                Questions.objects.get(pk=qno, level=profile.year)
+                print(profile.score)
+                return render(request, 'Question.html', context)
+            except Questions.DoesNotExist:
+                continue
+    else:
+        questions = Questions.object.get(pk=qno)
+        context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
+                   'buff3': profile.buff3}
+        profile.buff1 = 0
+        profile.save()
+        return render(request, 'Question.html', context)
 
 
 def index3(request, qno):
@@ -101,15 +109,19 @@ def buffer(request, qno):
     profile = request.user.Profile
     if profile.buff_cntr == 0:
         profile.buff1 = qno
+        print(profile.buff1)
         profile.buff_cntr = profile.buff_cntr + 1
+        profile.save()
         return redirect(reverse('index2'))
     elif profile.buff_cntr == 1:
         profile.buff2 = qno
         profile.buff_cntr = profile.buff_cntr + 1
+        profile.save()
         return redirect(reverse('index2'))
     elif profile.buff_cntr == 2:
         profile.buff3 = qno
         profile.buff_cntr = profile.buff_cntr + 1
+        profile.save()
         return redirect(reverse('index2'))
     else:
         full_buff = {'is_full': profile.buff_cntr}
