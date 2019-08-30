@@ -21,20 +21,7 @@ class Profile(models.Model):
     buff2 = models.IntegerField(default=0)
     buff3 = models.IntegerField(default=0)
     buff_cntr = models.IntegerField(default=0)
-
-    FE = 'FE'
-    SE = 'SE'
-
-    CHOICES = [
-        (FE, 'Freshman'),
-        (SE, 'Senior'),
-
-    ]
-    year = models.CharField(
-        max_length=2,
-        choices=CHOICES,
-        default=FE,
-    )
+    level = models.IntegerField(default=2)
 
     def __str__(self):
         return self.p1_name
@@ -47,7 +34,7 @@ class Questions(models.Model):
     option3 = models.CharField(max_length=100, default="")
     option4 = models.CharField(max_length=100, default="")
     answer = models.CharField(max_length=100, default="")
-    level = models.CharField(max_length=2, default="")
+    level = models.IntegerField(default=2)
 
     def __str__(self):
         return self.question

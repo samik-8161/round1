@@ -28,9 +28,11 @@ def index1(request):
                 p2_name = request.POST['p2_name']
                 p2_email = request.POST['p2_email']
                 mob2 = request.POST['mob2']
+                level = request.POST['year']
 
                 userprofile = Profile(p1_name=p1_name, p1_email=p1_email, mob1=mob1, p2_name=p2_name, p2_email=p2_email,
-                                      mob2=mob2, user=user)
+                                      mob2=mob2, user=user, level=level)
+
 
             if re.search(regex, p1_email):
                 auth.login(request, user)
@@ -45,29 +47,26 @@ def index1(request):
         return render(request, 'signup.html')
 
 
-def index2(request, qno=0):
+def index2(request):
     profile = Profile.objects.get(user=request.user)
-    if qno == 0:
-        while True:
-            qno = random.randint(1, 4)
-            questions = Questions.objects.get(pk=qno)
-            #        profile.visited.append(qno)
-            #       print(profile.visited)
+    while True:
+        qno = random.randint(1, 10)
+        #questions = Questions.objects.get(pk=qno)
+        #        profile.visited.append(qno)
+        #       print(profile.visited)
+        #context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
+        #           'buff3': profile.buff3}
+        try:
+            questions = Questions.objects.get(pk=qno, level=profile.level)
+
             context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
                        'buff3': profile.buff3}
-            try:
-                Questions.objects.get(pk=qno, level=profile.year)
-                print(profile.score)
-                return render(request, 'Question.html', context)
-            except Questions.DoesNotExist:
-                continue
-    else:
-        questions = Questions.object.get(pk=qno)
-        context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
-                   'buff3': profile.buff3}
-        profile.buff1 = 0
-        profile.save()
-        return render(request, 'Question.html', context)
+            print(profile.score)
+            print("This is my score")
+            return render(request, 'Question.html', context)
+        except Questions.DoesNotExist:
+            print("fgh")
+            continue
 
 
 def index3(request, qno):
@@ -123,6 +122,5 @@ def buffer(request, qno):
         profile.buff_cntr = profile.buff_cntr + 1
         profile.save()
         return redirect(reverse('index2'))
-    else:
-        full_buff = {'is_full': profile.buff_cntr}
-        return JsonResponse(full_buff)
+    full_buff = {'is_full': profile.buff_cntr}
+    return JsonResponse(full_buff)
