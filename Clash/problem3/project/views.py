@@ -2,12 +2,13 @@ import datetime
 import random
 import re
 
+from django.contrib import messages
 from django.contrib import auth
+from django.contrib.auth import login
 from django.contrib.auth.models import User
-from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.http import JsonResponse, HttpResponseRedirect
+from django.shortcuts import render, redirect, render_to_response
 from django.urls import reverse
-from django.contrib.auth import login, logout
 
 from .models import Questions, Profile, Response
 
@@ -33,7 +34,6 @@ def index1(request):
                 userprofile = Profile(p1_name=p1_name, p1_email=p1_email, mob1=mob1, p2_name=p2_name, p2_email=p2_email,
                                       mob2=mob2, user=user, level=level)
 
-
             if re.search(regex, p1_email):
                 auth.login(request, user)
                 userprofile.login_time = datetime.datetime.now(login(request, user))
@@ -51,16 +51,16 @@ def index2(request):
     profile = Profile.objects.get(user=request.user)
     while True:
         qno = random.randint(1, 10)
-        #questions = Questions.objects.get(pk=qno)
+        # questions = Questions.objects.get(pk=qno)
         #        profile.visited.append(qno)
         #       print(profile.visited)
-        #context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
+        # context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
         #           'buff3': profile.buff3}
         try:
             questions = Questions.objects.get(pk=qno, level=profile.level)
 
             context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
-                       'buff3': profile.buff3}
+                       'buff3': profile.buff3, 'full_buff': profile.buff_cntr}
             print(profile.score)
             print("This is my score")
             return render(request, 'Question.html', context)
@@ -111,16 +111,27 @@ def buffer(request, qno):
         print(profile.buff1)
         profile.buff_cntr = profile.buff_cntr + 1
         profile.save()
+        messages.info(request, 'Added successfully to buffer!')
         return redirect(reverse('index2'))
     elif profile.buff_cntr == 1:
         profile.buff2 = qno
         profile.buff_cntr = profile.buff_cntr + 1
         profile.save()
+        messages.info(request, 'Added successfully to buffer!')
         return redirect(reverse('index2'))
     elif profile.buff_cntr == 2:
         profile.buff3 = qno
         profile.buff_cntr = profile.buff_cntr + 1
         profile.save()
+        messages.info(request, 'Added successfully to buffer!')
         return redirect(reverse('index2'))
-    full_buff = {'is_full': profile.buff_cntr}
-    return JsonResponse(full_buff)
+    elif profile.buff_cntr > 2:
+        return render_to_response('Question.html', {'message': 'Solve at least one of the buffer questions!'})
+
+
+def buff_quest(request, qno):
+    profile = request.user.Profile
+    questions = Questions.objects.get(pk=qno)
+    context = {'question': questions, 'score': profile.score, 'buff1': profile.buff1, 'buff2': profile.buff2,
+               'buff3': profile.buff3}
+    return render(request, 'Question.html', context)

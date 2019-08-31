@@ -8,4 +8,5 @@ urlpatterns = [
     path('question/answer/<int:qno>/', views.index3, name='index3'),
     path('question/pushinbuffer/<int:qno>/', views.buffer, name='buffer'),
     path('question/logout/', views.index4, name='login_logout'),
+    path('question/<int:qno>/', views.buff_quest)
 ]

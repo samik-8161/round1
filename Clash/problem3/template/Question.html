@@ -22,9 +22,9 @@
     <button type="submit" formaction="answer/{{ question.id }}/">Submit your response</button>
     <button type="submit" name="logout" formaction="logout/">Exit</button>
     <button type="submit" name="buffer" id="buffer" formaction="pushinbuffer/{{ question.id }}/">Put this in buffer</button>
-    <button type="submit" name="buffer1" id="buffer1" formaction="/{{ buff1 }}">buffer1</button>
-    <button type="submit" name="buffer2" id="buffer2" formaction="/{{ buff2 }}">buffer2</button>
-    <button type="submit" name="buffer3" id="buffer3" formaction="/{{ buff3 }}">buffer3</button>
+    <button type="submit" name="buffer1" id="buffer1" formaction="{{ buff1 }}/">buffer1</button>
+    <button type="submit" name="buffer2" id="buffer2" formaction="{{ buff2 }}/">buffer2</button>
+    <button type="submit" name="buffer3" id="buffer3" formaction="{{ buff3 }}/">buffer3</button>
 
     <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
@@ -33,14 +33,15 @@
     $("#buffer").click(function () {
       var username = $(this).val();
 $.ajax({
-        url: '/ajax/validate_username/',
-        data: {
-          'username': username
+        url: '/ajax/buffer/',
+        full_buff: {
+          'is_full': 
         },
         dataType: 'json',
         success: function (full_buff) {
-          if (full_buff.is_full>2) {
-            alert("Your buffer is full, Solve at least one of them");
+          if (full_buff.is_full==2) {
+            document.getElementById("buffer").disable = True;
+
           }else
               alert("Added successfully to buffer");
         }
@@ -50,5 +51,6 @@ $.ajax({
 {% endblock %}
 
 </form>
+<a href="pushinbuffer/{{ question.id }}/"><button type="submit" name="buffer" id="buffer0">Put this in buffer</button></a>
 </body>
 </html>
